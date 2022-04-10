@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Doctor Details</title>
+    
+</head>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/js/main.js}" rel="stylesheet">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+<div th:replace="fragments :: menu"></div>
+<body>
+
+  
+    <div class="container my-2">
+        <div class="card">
+            <div class="card-body">
+                <div th:switch="${doctors}" class="container my-5">
+                    <p class="my-5">
+                     <a href="/addDoctor" class="btn btn-warning">  Add Doctor </a>
+                        
+                    </p>
+                    <div class="col-md-10">
+                     <div class="alert alert-warning" th:if="${successMessage}" ></div>
+                        <h2 th:case="null">No Doctor yet!</h2>
+                        <div th:case="*">
+                            <table class="table table-striped table-responsive-md">
+                                <thead>
+                                    <tr>
+                                          <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>email</th>
+                                        <th>Mobile_No</th>
+                                        <th>doctor_specialist</th>
+                                       
+                                        
+                                        <th colspan=2>Actions</th>
+                                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="doctor : ${doctors}">  <!-- 1 -->
+                                        <td th:text="${doctor.firstName}"></td>
+                                        <td th:text="${doctor.lastName}"></td>
+                                        <td th:text="${doctor.email}"></td>
+                                          <td th:text="${doctor.mobile_no}"></td>
+                                            <td th:text="${doctor.doctor_specialist}"></td>
+                                             
+                                       
+                                        <td><a th:href="@{/updateFormDoctor/{id}(id=${doctor.id})}" class="btn btn-success">Edit</a></td> 
+                                        <td><a th:href="@{/deleteDoc/{id}(id=${doctor.id})}" class="btn btn-danger">Delete</a></td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments :: pageFooter"></div>
+
+</body>
+
+</html>

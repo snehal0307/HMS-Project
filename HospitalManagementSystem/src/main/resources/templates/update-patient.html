@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Add Patient details</title>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/js/main.js}" rel="stylesheet">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<div th:replace="fragments :: menu"></div>
+</head>
+
+<body >
+
+
+<h1>Update Patient Details</h1>
+<form th:action="@{/savePatient}" th:object="${patient}" method="post" class="form needs-validation">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input class="form-control" type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
+        </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input class="form-control" type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+         </div>
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" th:field="*{email}" id="email" placeholder="email">
+        </div>
+    
+     <div class="form-group">
+        <label for="mobile_No">Mobile No</label>
+        <input class="form-control" type="text" th:field="*{mobile_No}" id="mobile_No" placeholder="mobile_No">
+        </div>
+    
+     <div class="form-group">
+        <label for="address">Address</label>
+        <input class="form-control" type="text" th:field="*{address}" id="address" placeholder="address">
+        </div>
+    
+    <div class="form-group">
+        <label for="weight">Weight</label>
+        <input class="form-control" type="tel" th:field="*{weight}" id="weight" placeholder="weight">
+         </div>
+         
+     <div class="form-group">
+       <label for="blood_Group"> Blood Group:</label>
+      <!--<input type="blood_Group" class="form-control" id="blood_Group" placeholder="Enter blood group" name="blood group"> -->
+       <select id="blood_Group" name="blood_Group">
+    <option value="a">Ap</option>
+   <option value="a">An</option>
+    <option value="b+ve">B+ve</option>
+    <option value="ab+ve">AB+ve</option>
+     <option value="ab-ve">AB-ve</option>
+    <option value="o+ve">O+ve</option>
+      </select>
+     </div>
+     
+    <div class="form-group">
+       <label for="gender"> Gender:</label>
+     <select id="gender" name="gender">
+    <option value="female">Female</option>
+   <option value="male">Male</option>
+    <option value="transgender">Transgender</option>
+     </select>
+  </div>
+  
+   <div class="form-group">
+        <label for="DOB">DOB</label>
+        <input class="form-control" type="text" th:field="*{DOB}" id="DOB" placeholder="DOB">
+        </div>
+    
+    <div class="form-group">
+        <label for="patient_Disease">Patient_Disease</label>
+        <input class="form-control" type="text" th:field="*{patient_Disease}" id="patient_Disease" placeholder="patient_Disease">
+        </div>
+
+    
+    
+    <input type="submit"  class="btn btn-warning mb-3" value="Update Patient">
+    <a  th:href = "@{/getPatients}" class=" btn btn-primary btn-md mb-3 float-right"> Patient List</a></li><br><br>
+</form>
+<div th:replace="fragments :: pageFooter"></div>
+</body>
+</html>
